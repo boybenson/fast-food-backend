@@ -1,0 +1,21 @@
+{
+  "name": "fast-food-backend",
+  "version": "1.0.0",
+  "description": "Backend for the fast food delivery app built with apollo server",
+  "main": "server.js",
+  "repository": "https://github.com/boybenson/fast-food-backend.git",
+  "author": "boybenson <ybenson96@gmail.com>",
+  "license": "MIT",
+  "type": "module",
+  "private": false,
+  "scripts": {
+    "start": "node server.js",
+    "start:dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "apollo-server": "^3.6.1",
+    "dotenv": "^14.2.0",
+    "graphql": "^16.2.0",
+    "mongoose": "^6.1.7"
+  }
+}
