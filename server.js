@@ -1,36 +1,19 @@
+import { ApolloServer, gql } from "apollo-server";
 import dotenv from "dotenv";
 dotenv.config();
-import { ApolloServer, gql } from "apollo-server";
 
-const resolvers = {
-  Query: {
-    books: () => books,
-  },
-};
+import connectDb from "./config/database.js";
+import { resolvers } from "./resolvers/index.js";
+import { typeDefs } from "./schema/index.js";
 
-const books = [
-  {
-    title: "The Awakening",
-    author: "Kate Chopin",
-  },
-  {
-    title: "City of Glass",
-    author: "Paul Auster",
-  },
-];
-
-const typeDefs = gql`
-  type Book {
-    title: String
-    author: String
-  }
-
-  type Query {
-    books: [Book]
-  }
-`;
 const server = new ApolloServer({ typeDefs, resolvers });
 
-server.listen().then(({ url }) => {
-  console.log(`🚀  Server ready at ${url}`);
-});
+const dbConnection = await connectDb();
+
+if (dbConnection) {
+  server.listen().then(({ url }) => {
+    console.log(`🚀  Server ready at ${url}`);
+  });
+} else {
+  console.log(`error connecting to database`);
+}
