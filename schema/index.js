@@ -2,9 +2,11 @@ import { gql } from "apollo-server";
 
 export const typeDefs = gql`
   type User {
+    id: String!
     email: String!
-    contact: Int!
+    phone: String!
     role: String!
+    accessToken: String!
   }
 
   type Food {
@@ -23,8 +25,19 @@ export const typeDefs = gql`
     totalPrice: Float!
   }
 
+  input UserContent {
+    email: String!
+    password: String!
+    phone: String!
+  }
+
   type Query {
     getUsers: [User]!
+    getUser: User
     getOrders: [Order]!
+  }
+
+  type Mutation {
+    signUp(content: UserContent): User
   }
 `;

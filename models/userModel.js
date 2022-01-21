@@ -5,18 +5,20 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  contact: {
-    type: Number,
+  phone: {
+    type: String,
     length: 10,
     required: true,
   },
   password: {
     type: String,
     required: true,
+    select: false,
   },
   role: {
-    type: Boolean,
-    required: false,
+    type: String,
+    required: true,
+    default: "customer",
   },
 });
 

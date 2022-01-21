@@ -1,3 +1,5 @@
+import { SIGN_UP } from "../resolvers/auth.js";
+
 const books = [
   {
     title: "The Awakening",
@@ -12,6 +14,10 @@ const books = [
 export const resolvers = {
   Query: {
     getUsers: () => books,
+    getUser: () => books,
     getOrders: () => books,
+  },
+  Mutation: {
+    signUp: SIGN_UP,
   },
 };
