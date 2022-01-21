@@ -1,4 +1,4 @@
-import { SIGN_UP } from "../resolvers/auth.js";
+import { SIGN_IN, SIGN_UP } from "../resolvers/auth.js";
 
 const books = [
   {
@@ -19,5 +19,6 @@ export const resolvers = {
   },
   Mutation: {
     signUp: SIGN_UP,
+    signIn: SIGN_IN,
   },
 };

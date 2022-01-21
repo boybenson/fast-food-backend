@@ -28,7 +28,6 @@ export const typeDefs = gql`
   input UserContent {
     email: String!
     password: String!
-    phone: String!
   }
 
   type Query {
@@ -38,6 +37,7 @@ export const typeDefs = gql`
   }
 
   type Mutation {
-    signUp(content: UserContent): User
+    signUp(phone: String, content: UserContent): User!
+    signIn(content: UserContent): User!
   }
 `;
