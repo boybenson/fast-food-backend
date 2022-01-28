@@ -5,4 +5,9 @@ const generateToken = (id) => {
   return token;
 };
 
-export { generateToken };
+const verifyToken = (token) => {
+  const result = jwt.verify(token, "jwt_token");
+  return result;
+};
+
+export { generateToken, verifyToken };

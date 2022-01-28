@@ -27,7 +27,7 @@ const SIGN_UP = async (_, args) => {
   }
 };
 
-const SIGN_IN = async (_, args) => {
+const SIGN_IN = async (_, args, context) => {
   const { email, password } = args.content;
   const user = await userModel.findOne({ email }).select("+password");
   if (!user) {

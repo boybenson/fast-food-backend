@@ -1,4 +1,5 @@
 import { SIGN_IN, SIGN_UP } from "../resolvers/auth.js";
+import { ADD_FOOD, GET_CATEGORY } from "./food.js";
 
 const books = [
   {
@@ -13,12 +14,13 @@ const books = [
 
 export const resolvers = {
   Query: {
-    getUsers: () => books,
-    getUser: () => books,
     getOrders: () => books,
+    getCategory: GET_CATEGORY,
   },
+
   Mutation: {
     signUp: SIGN_UP,
     signIn: SIGN_IN,
+    addFood: ADD_FOOD,
   },
 };
