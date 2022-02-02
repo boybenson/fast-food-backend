@@ -22,6 +22,11 @@ const foodSchema = new mongoose.Schema({
   image: {
     type: String,
   },
+
+  qtyToBuy: {
+    type: Number,
+    default: 1,
+  },
 });
 
 const foodModel = mongoose.model("food", foodSchema);
