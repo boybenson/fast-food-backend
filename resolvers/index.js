@@ -1,5 +1,6 @@
 import { SIGN_IN, SIGN_UP } from "../resolvers/auth.js";
 import { ADD_FOOD, GET_CATEGORY } from "./food.js";
+import { CREATE_ORDER } from "./orders.js";
 
 const books = [
   {
@@ -22,5 +23,6 @@ export const resolvers = {
     signUp: SIGN_UP,
     signIn: SIGN_IN,
     addFood: ADD_FOOD,
+    createOrder: CREATE_ORDER,
   },
 };

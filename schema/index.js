@@ -17,14 +17,18 @@ export const typeDefs = gql`
     category: String
     cookingDuration: Int
     id: String
+    qtyToBuy: Int
   }
 
   type Order {
     user: User!
+    id: String!
     address: String
     foods: [Food!]!
     totalPrice: Float!
   }
+
+  # inputs
 
   input UserContent {
     email: String!
@@ -40,6 +44,23 @@ export const typeDefs = gql`
     cookingDuration: Int
   }
 
+  input OrderContent {
+    address: String!
+    totalPrice: Float!
+    paymentMethod: String
+  }
+
+  input OrderedFoodContent {
+    name: String!
+    price: Float!
+    image: String
+    category: String
+    id: String
+    qtyToBuy: Int
+  }
+
+  # default types
+
   type Query {
     getUsers: [User]!
     getUser: User
@@ -51,5 +72,6 @@ export const typeDefs = gql`
     signUp(phone: String, content: UserContent): User!
     signIn(content: UserContent): User!
     addFood(content: FoodContent): Food!
+    createOrder(content: OrderContent, foods: [OrderedFoodContent]): Order!
   }
 `;
