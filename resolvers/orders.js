@@ -1,14 +1,38 @@
 import { ApolloError } from "apollo-server-errors";
 import orderModel from "../models/orderModel.js";
 
-const GET_ALL_ORDERS = async () => {};
+const GET_ORDERS = async (_, __, context) => {
+  const { user } = context;
+  if (!user) {
+    throw new ApolloError("illegal User", "401");
+  } else {
+    if (user.role === "admin") {
+      const orders = await orderModel.find({}).populate("user");
+      return orders;
+    } else {
+      const orders = await orderModel.find({ user: user._id }).populate("user");
+      return orders;
+    }
+  }
+};
+
+const GET_ORDER = async (_, args, context) => {
+  let { user } = context;
+  let { orderId } = args;
+  if (!user) {
+    throw new ApolloError("illegal User", "401");
+  } else {
+    const order = await orderModel.findOne({ _id: orderId }).populate("user");
+    return order;
+  }
+};
 
 const CREATE_ORDER = async (_, args, context) => {
   const { user } = context;
   const { content, foods } = args;
 
   if (!user) {
-    throw new ApolloError("illegal User", "401");
+    throw new ApolloError("please login", "401");
   } else {
     let newOrderDetails = {
       user: user?._id,
@@ -26,4 +50,4 @@ const CREATE_ORDER = async (_, args, context) => {
   }
 };
 
-export { GET_ALL_ORDERS, CREATE_ORDER };
+export { GET_ORDERS, CREATE_ORDER, GET_ORDER };

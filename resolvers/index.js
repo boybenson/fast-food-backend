@@ -1,22 +1,12 @@
 import { SIGN_IN, SIGN_UP } from "../resolvers/auth.js";
 import { ADD_FOOD, GET_CATEGORY } from "./food.js";
-import { CREATE_ORDER } from "./orders.js";
-
-const books = [
-  {
-    title: "The Awakening",
-    author: "Kate Chopin",
-  },
-  {
-    title: "City of Glass",
-    author: "Paul Auster",
-  },
-];
+import { CREATE_ORDER, GET_ORDER, GET_ORDERS } from "./orders.js";
 
 export const resolvers = {
   Query: {
-    getOrders: () => books,
+    getOrders: GET_ORDERS,
     getCategory: GET_CATEGORY,
+    getOrder: GET_ORDER,
   },
 
   Mutation: {

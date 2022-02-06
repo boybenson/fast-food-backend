@@ -26,6 +26,7 @@ export const typeDefs = gql`
     address: String
     foods: [Food!]!
     totalPrice: Float!
+    isDelivered: Boolean
   }
 
   # inputs
@@ -62,10 +63,9 @@ export const typeDefs = gql`
   # default types
 
   type Query {
-    getUsers: [User]!
-    getUser: User
     getCategory(categoryName: String): [Food]!
     getOrders: [Order]!
+    getOrder(orderId: String!): Order!
   }
 
   type Mutation {
