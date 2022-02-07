@@ -26,6 +26,7 @@ export const typeDefs = gql`
     address: String
     foods: [Food!]!
     totalPrice: Float!
+    paymentMethod: String
     isDelivered: Boolean
   }
 
