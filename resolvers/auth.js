@@ -31,7 +31,7 @@ const SIGN_UP = async (_, args) => {
       data: {
         sender: "FAST FOOD",
         message:
-          "Hi!, Congrats! for signin up, Enjoy The Most Delicious Meals In The World With Amazing Prices!",
+          "Hi!, Congrats! for signing up, Enjoy The Most Delicious Meals In The World With Amazing Prices!",
         recipients: [`233${newUser?.phone?.slice(1)}`],
       },
     };
