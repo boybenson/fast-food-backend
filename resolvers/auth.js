@@ -10,7 +10,7 @@ const SIGN_UP = async (_, args) => {
   const { email, password } = args.content;
   const { phone } = args;
 
-  const user = await userModel.findOne({ email }).select("-password");
+  const user = await userModel.findOne({ email });
 
   if (user) {
     throw new ApolloError("User Already Exists!", "409");
