@@ -1,10 +1,10 @@
 import dotenv from "dotenv";
 dotenv.config();
+import axios from "axios";
 import { ApolloError } from "apollo-server-errors";
 import userModel from "../models/userModel.js";
 import { generateToken } from "../helpers/jwt.js";
 import { comparePassword, hashPassword } from "../helpers/password.js";
-import axios from "axios";
 
 const SIGN_UP = async (_, args) => {
   const { email, password } = args.content;

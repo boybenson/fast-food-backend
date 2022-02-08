@@ -1,3 +1,4 @@
+import axios from "axios";
 import { ApolloError } from "apollo-server-errors";
 import orderModel from "../models/orderModel.js";
 
@@ -41,11 +42,27 @@ const CREATE_ORDER = async (_, args, context) => {
       foods,
       paymentMethod: content?.paymentMethod,
     };
+
     const newOrder = await orderModel.create(newOrderDetails);
     const order = await orderModel
       .findOne({ _id: newOrder._id })
       .populate("user");
     order.id = order._id;
+
+    const axiosConfig = {
+      method: "post",
+      url: "https://sms.arkesel.com/api/v2/sms/send",
+      headers: {
+        "api-key": process.env.SMS_API_KEY,
+      },
+      data: {
+        sender: "FAST FOOD",
+        message: `Hi!, Your Order with Id Number ${order?.id} has been received! with total price of GHC ${order?.totalPrice}, thank you for choosing the best FAST FOOD joint in the world`,
+        recipients: [`233${user?.phone?.slice(1)}`],
+      },
+    };
+
+    await axios(axiosConfig);
     return order;
   }
 };
