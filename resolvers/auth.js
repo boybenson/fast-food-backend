@@ -30,9 +30,9 @@ const SIGN_UP = async (_, args) => {
       },
       data: {
         sender: "FAST FOOD",
+        recipients: [`233${newUser?.phone?.slice(1)}`],
         message:
           "Hi!, Congrats! for signing up, Enjoy The Most Delicious Meals In The World With Amazing Prices!",
-        recipients: [`233${newUser?.phone?.slice(1)}`],
       },
     };
 

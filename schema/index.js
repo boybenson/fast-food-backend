@@ -72,6 +72,7 @@ export const typeDefs = gql`
   type Mutation {
     signUp(phone: String, content: UserContent): User!
     signIn(content: UserContent): User!
+    updateUser(id: String!, email: String, phone: String): User
     addFood(content: FoodContent): Food!
     createOrder(content: OrderContent, foods: [OrderedFoodContent]): Order!
   }

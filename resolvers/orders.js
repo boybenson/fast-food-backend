@@ -57,7 +57,7 @@ const CREATE_ORDER = async (_, args, context) => {
       },
       data: {
         sender: "FAST FOOD",
-        message: `Hi!, Your Order with Id Number ${order?.id} has been received! with total price of GHC ${order?.totalPrice}, thank you for choosing the best FAST FOOD joint in the world`,
+        message: `Hi!, Your Order with Id Number ${order?.id} has been received! with total price of GHC ${order?.totalPrice}, thank you for choosing the best FAST FOOD joint in the world.`,
         recipients: [`233${user?.phone?.slice(1)}`],
       },
     };
