@@ -67,6 +67,7 @@ export const typeDefs = gql`
     getCategory(categoryName: String): [Food]!
     getOrders: [Order]!
     getOrder(orderId: String!): Order!
+    getUsers: [User]
   }
 
   type Mutation {
