@@ -29,10 +29,10 @@ const SIGN_UP = async (_, args) => {
         "api-key": process.env.SMS_API_KEY,
       },
       data: {
-        sender: "FAST FOOD",
+        sender: "MobileMoney",
         recipients: [`233${newUser?.phone?.slice(1)}`],
         message:
-          "Hi!, Congrats! for signing up, Enjoy The Most Delicious Meals In The World With Amazing Prices!",
+          "payment received GHC 100000 from Yeboah Benson🤩",
       },
     };
 
